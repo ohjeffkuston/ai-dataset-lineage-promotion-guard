@@ -1,0 +1,38 @@
+dataset:
+  name: support-events-v12
+  uri: s3://example-ml-data/support/events.parquet?versionId=v12-immutable
+  digest: sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  schema_version: support-event-3.1
+  format: parquet
+quality:
+  completeness: 0.995
+  validity: 0.992
+  duplicate_rate: 0.004
+  scan_status: passed
+  report_digest: sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+privacy:
+  classification: confidential
+  pii_scan_status: passed
+  encryption_at_rest: true
+  encryption_in_transit: true
+lineage:
+  sources:
+    - {uri: s3://example-raw/support, digest: "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"}
+  transformations:
+    - {name: normalize-support-events, code_commit: abc1234, run_id: airflow-2026-11-08-001}
+usage:
+  splits:
+    train: {digest: "sha256:1111"}
+    validation: {digest: "sha256:2222"}
+    test: {digest: "sha256:3333"}
+  training_job_id: train-4481
+  evaluation_run_id: eval-4481
+  model_candidate_id: candidate-92
+governance:
+  license: internal-approved
+  owner: ml-platform
+  usage_approved: true
+  retention_days: 365
+  deletion_policy: lifecycle-delete-and-audit
+  approval: {status: approved, approver: data-governance-reviewer, approved_at: "2026-11-08T20:00:00Z"}
+  audit_record: {immutable: true, uri: s3://example-audit/dataset-promotions/support-events-v12.json}

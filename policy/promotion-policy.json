@@ -1,0 +1,1 @@
+{"minimum_completeness":0.98,"minimum_validity":0.98,"maximum_duplicate_rate":0.02,"maximum_retention_days":3650,"required_splits":["train","validation","test"]}
